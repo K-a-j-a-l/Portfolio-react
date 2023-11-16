@@ -1,4 +1,4 @@
-import React, {useState ,useEffect } from 'react'
+import {useState ,useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
 export default function Banner() {
@@ -13,15 +13,15 @@ export default function Banner() {
         const ticker = setInterval(() => {
           tick();
         }, delta);
-    
+        
         return () => { clearInterval(ticker) };
     }, [text])
+    console.log(index);
     const tick = () => {
         const i = loopNum % toRotate.length;
         const fullText = toRotate[i];
         const updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
         setText(updatedText);
-    
         if (isDeleting) {
           setDelta(prevDelta => prevDelta / 2);
         }
